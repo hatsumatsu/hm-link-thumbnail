@@ -36,15 +36,22 @@ function hmlt_save_post( $post_id ) {
         return;
     }
 
+    // first try: check for post format link url set by wp-post-formats plugin
+    $url = get_post_meta( $post_id, '_format_link_url', true ); 
+    // fallback: take the post's title
+    if( $url == '' ) {
+    	$url = get_the_title( $post_id );
+    }
+
     // post title is valid URL
-    if( hmlt_is_url( get_the_title( $post_id ) ) ) {
+    if( hmlt_is_url( $url ) ) {
 
     	// delete current post thumbnail
     	if( has_post_thumbnail( $post_id ) ) {
     		hmlt_delete_post_thumbnail( get_post_thumbnail_id( $post_id ) );
     	}
 
-    	$image_path = get_option( 'hmlt_service_url' ) . str_replace( 'http://', '', get_the_title( $post_id ) );
+    	$image_path = get_option( 'hmlt_service_url' ) . str_replace( 'http://', '', $url );
 
  		hmlt_create_attachment( $image_path, $post_id );
 
