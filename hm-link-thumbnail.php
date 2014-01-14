@@ -2,7 +2,7 @@
 /*
 Plugin Name: HM Link Thumbnail
 Version: 0.1
-Description: Automatically save a website screenshot as featured image for all posts that titles are a valid URLs.
+Description: Automatically save a screenshot of a website as featured image for all posts that titles are valid URLs.
 Plugin URI: http://hatsumatsu.de/
 Author: HATSUMATSU, Martin Wecke
 Author URI: http://hatsumatsu.de/
